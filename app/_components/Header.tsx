@@ -1,9 +1,10 @@
 import React from "react";
+import Image from "next/image";
 
 const Header = () => {
   return (
     <div>
-      <h1>Header</h1>
+      <Image src="/logo.svg" alt="logo image" width={180} height={80} />
     </div>
   );
 };
