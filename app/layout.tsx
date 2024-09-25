@@ -13,6 +13,11 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
+const questrialReg = localFont({
+  src: "./fonts/Questrial-Regular.ttf",
+  variable: "--font-questrial-reg",
+  weight: "400", // Questrial is regular weight only
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -27,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${questrialReg.variable} antialiased`}
       >
         <div className="md:px-20">
           <Header />
