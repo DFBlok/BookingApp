@@ -54,7 +54,7 @@ const CategorySearch = () => {
       </div>
       {/* Display List of Catergories */}
       <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-        {/*  {categoryList.map(
+        {categoryList.map(
           (item, index) =>
             index < 6 && (
               <div
@@ -72,8 +72,8 @@ const CategorySearch = () => {
                 </label>
               </div>
             )
-        )} */}
-        {!categoryList ? (
+        )}
+        {/*{!categoryList ? (
           <p>Loading categories...</p> // Show a loading state while fetching
         ) : categoryList.length > 0 ? (
           categoryList.map(
@@ -100,7 +100,7 @@ const CategorySearch = () => {
           )
         ) : (
           <p>No categories available</p>
-        )}
+        )}*/}
       </div>
     </div>
   );
