@@ -12,7 +12,10 @@ const DoctorLits = ({ doctorList }: DoctorListProps) => {
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-7">
         {doctorList &&
           doctorList.map((doctor, index) => (
-            <div className="border-[1px] rounded-lg p-3" key={index}>
+            <div
+              className="border-[1px] rounded-lg p-3 cursor-pointer hover:border-blue-700 hover:shadow-md transition-all ease-in-out"
+              key={index}
+            >
               <Image
                 src={doctor.attributes?.image?.data?.attributes?.url}
                 alt={doctor}
