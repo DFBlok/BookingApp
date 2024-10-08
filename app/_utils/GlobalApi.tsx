@@ -14,8 +14,15 @@ const getCategory = () =>
   axiosClient.get("categories?populate=*").catch((err: any) => {
     console.error("Error fetching categorie:", err);
   });
+/* doctor list */
+const getDoctorList = () =>
+  axiosClient.get("doctors?populate=*").catch((err: any) => {
+    console.error("Error fetching Doctors: ", err);
+  });
+
 export default {
   getCategory,
+  getDoctorList,
 };
 /* const api = { getCategory };
 export default api; */
