@@ -14,6 +14,8 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/command";
+import { usePathname } from "next/navigation";
+import { Key } from "lucide-react";
 
 type CategoryItem = {
   id: number;
@@ -31,6 +33,8 @@ type CategoryItem = {
 
 function CategoryList() {
   const [categoryList, setCategoryList] = useState<CategoryItem[]>([]);
+  const params = usePathname();
+  const catergory = params.split("/")[2];
   useEffect(() => {
     getCategoryList();
   }, []);
@@ -51,10 +55,10 @@ function CategoryList() {
           <CommandGroup heading="Suggestions">
             {categoryList &&
               categoryList.map((item, index) => (
-                <CommandItem>
+                <CommandItem key={index}>
                   <Link
                     href={""}
-                    className="p-2 flex gap-2 text-[12px] text-blue-600 rounded-md cursor-pointer w-full"
+                    className="p-2 flex gap-2 text-[14px] text-blue-600 rounded-md cursor-pointer w-full"
                   >
                     <Image
                       src={item.attributes.Icon.data.attributes.url}

@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 
 const Search = ({ params }: any) => {
   useEffect(() => {
-    console.log(params);
+    /* console.log(params); */
   }, []);
   return <div>Search </div>;
 };
