@@ -55,10 +55,10 @@ function CategoryList() {
           <CommandGroup heading="Suggestions">
             {categoryList &&
               categoryList.map((item, index) => (
-                <CommandItem key={index}>
+                <CommandItem key={item.id}>
                   <Link
-                    href={""}
-                    className="p-2 flex gap-2 text-[14px] text-blue-600 rounded-md cursor-pointer w-full"
+                    href={"/search/" + item.attributes.name}
+                    className={`p-2 flex gap-2 text-[14px] text-blue-600 items-center rounded-md cursor-pointer w-full ${catergory == item.attributes.name && "bg-blue-100"}`}
                   >
                     <Image
                       src={item.attributes.Icon.data.attributes.url}

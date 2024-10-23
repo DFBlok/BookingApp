@@ -61,7 +61,7 @@ const CategorySearch = () => {
                 index < 6 && (
                   <Link
                     href={"search/" + item.attributes.name}
-                    key={index}
+                    key={item.id} //Ensure unique key for each category
                     className="flex flex-col text-center  cursor-pointer gap-2 items-center p-5 bg-blue-50 m-2 rounded-lg hover:scale-110 transition-all ease-in-out"
                   >
                     <Image
@@ -77,7 +77,10 @@ const CategorySearch = () => {
                 )
             )
           : [1, 2, 3, 4, 5, 6].map((item, index) => (
-              <div className="h-[100px] w-[100px] m-2 bg-slate-200 animate-pulse rounded-lg"></div>
+              <div
+                key={index}
+                className="h-[100px] w-[100px] m-2 bg-slate-200 animate-pulse rounded-lg"
+              ></div>
             ))}
         {/*{!categoryList ? (
           <p>Loading categories...</p> // Show a loading state while fetching

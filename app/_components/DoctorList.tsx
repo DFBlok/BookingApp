@@ -41,7 +41,7 @@ const DoctorLits = ({ doctorList }: DoctorListProps) => {
               </div>
             ))
           : /* Sketelton Effect */
-            [1, 2, 3, 4, 5, 6, 7, 8].map((item, index) => (
+            [1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
               <div className="h-[220px] bg-slate-200 w-full rounded-lg animate-pulse "></div>
             ))}
       </div>
