@@ -1,5 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import GlobalApi from "@/app/_utils/GlobalApi";
 import {
   Command,
@@ -41,21 +43,29 @@ function CategoryList() {
     });
   };
   return (
-    <div className="h-screen mt-5 flex flex-col">
+    <div className="h-screen fixed mt-5 flex flex-col">
       <Command>
         <CommandInput placeholder="Type a command or search..." />
-        <CommandList>
+        <CommandList className="overflow-visible">
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Suggestions">
-            <CommandItem>Calendar</CommandItem>
-            <CommandItem>Search Emoji</CommandItem>
-            <CommandItem>Calculator</CommandItem>
-          </CommandGroup>
-          <CommandSeparator />
-          <CommandGroup heading="Settings">
-            <CommandItem>Profile</CommandItem>
-            <CommandItem>Billing</CommandItem>
-            <CommandItem>Settings</CommandItem>
+            {categoryList &&
+              categoryList.map((item, index) => (
+                <CommandItem>
+                  <Link
+                    href={""}
+                    className="p-2 flex gap-2 text-[12px] text-blue-600 rounded-md cursor-pointer w-full"
+                  >
+                    <Image
+                      src={item.attributes.Icon.data.attributes.url}
+                      alt="icon"
+                      width={25}
+                      height={25}
+                    />
+                    <label>{item.attributes.name}</label>
+                  </Link>
+                </CommandItem>
+              ))}
           </CommandGroup>
         </CommandList>
       </Command>
