@@ -21,9 +21,14 @@ const getCategory = () =>
   }); */
 const getDoctorList = () => axiosClient.get("/doctors?populate=*");
 
+const getDoctorByCategory = (category: any) =>
+  axiosClient.get(
+    "/doctors?filters[categories][name][#in]=" + category + "&populate=*"
+  );
 export default {
   getCategory,
   getDoctorList,
+  getDoctorByCategory,
 };
 /* const api = { getCategory };
 export default api; */

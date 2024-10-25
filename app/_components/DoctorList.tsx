@@ -3,6 +3,7 @@ import Image from "next/image";
 
 interface DoctorListProps {
   doctorList: any[];
+  heading: any;
 }
 
 const DoctorLits = ({ doctorList }: DoctorListProps) => {
@@ -17,15 +18,19 @@ const DoctorLits = ({ doctorList }: DoctorListProps) => {
                 key={index}
               >
                 <Image
-                  src={doctor.attributes?.image?.data?.attributes?.url}
-                  alt={doctor}
+                  src={
+                    doctor.attributes?.Icon?.data.attributes?.url ||
+                    "/fallback-img.png"
+                  }
+                  //[1].attributes
+                  alt={"doctor"}
                   width={500}
                   height={200}
                   className="h-[200px] w-full object-cover rounded-lg"
                 />
                 <div className="mt-3 items-baseline flex flex-col gap-3">
                   <h2 className="text-[10px] bg-blue-100 py-1 rounded-full px-2 text-blue-700">
-                    {doctor.attributes?.categories?.data[0].attributes?.name}
+                    {doctor.attributes?.categories?.data?.attributes?.name}
                   </h2>
                   <h2 className="font-bold">{doctor.attributes?.Name}</h2>
                   <h2 className="text-blue-700 text-sm">

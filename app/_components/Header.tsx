@@ -1,7 +1,14 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import {
+  RegisterLink,
+  LoginLink,
+  LogoutLink,
+} from "@kinde-oss/kinde-auth-nextjs/components";
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 
 const Header = () => {
   const Menu = [
@@ -21,6 +28,13 @@ const Header = () => {
       path: "/",
     },
   ];
+
+  const { user } = useKindeBrowserClient();
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
+
   return (
     <div className="flex  items-center justify-between p-8 shadow-sm">
       <div className="flex items-center gap-10">
@@ -35,7 +49,15 @@ const Header = () => {
           ))}
         </ul>
       </div>
-      <Button className="bg-blue-600">Get Started</Button>
+      {user ? (
+        <LogoutLink>
+          <Button className="bg-gray-500 outline">Log Out</Button>
+        </LogoutLink>
+      ) : (
+        <LoginLink postLoginRedirectURL="/">
+          <Button className="bg-blue-600">Get Started</Button>
+        </LoginLink>
+      )}
     </div>
   );
 };
