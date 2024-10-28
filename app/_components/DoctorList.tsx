@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface DoctorListProps {
   doctorList: any[];
@@ -39,9 +40,11 @@ const DoctorLits = ({ doctorList }: DoctorListProps) => {
                   <h2 className="text-gray-500 text-sm">
                     {doctor.attributes?.Address}
                   </h2>
-                  <h2 className="p-2 px-3 text-blue-600 border-[1px] border-blue-600 rounded-full w-full text-center text-[11px] mt-2 cursor-pointer hover:bg-blue-600 hover:text-white">
-                    Book Now
-                  </h2>
+                  <Link href={"/details/" + doctor?.id}>
+                    <h2 className="p-2 px-3 text-blue-600 border-[1px] border-blue-600 rounded-full w-full text-center text-[11px] mt-2 cursor-pointer hover:bg-blue-600 hover:text-white">
+                      Book Now
+                    </h2>
+                  </Link>
                 </div>
               </div>
             ))
