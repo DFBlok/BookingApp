@@ -2,7 +2,7 @@
 import CategorySearch from "./_components/CategorySearch";
 import Hero from "./_components/Hero";
 import "../styles/globals.css";
-import DoctorLits from "./_components/DoctorList";
+import DoctorList from "./_components/DoctorList";
 import GlobalApi from "./_utils/GlobalApi";
 import { useState, useEffect, SetStateAction } from "react";
 
@@ -38,7 +38,7 @@ export default function Home() {
       {/* Catergory & Search */}
       <CategorySearch />
       {/* populate doctor list */}
-      <DoctorLits doctorList={doctorList} />
+      <DoctorList doctorList={doctorList} heading={undefined} />
     </div>
   );
 }
