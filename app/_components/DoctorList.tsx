@@ -19,10 +19,7 @@ const DoctorLits = ({ doctorList }: DoctorListProps) => {
                 key={index}
               >
                 <Image
-                  src={
-                    doctor.attributes?.Icon?.data.attributes?.url ||
-                    "/fallback-img.png"
-                  }
+                  src={doctor.attributes?.image?.data?.attributes?.url}
                   //[1].attributes
                   alt={"doctor"}
                   width={500}
