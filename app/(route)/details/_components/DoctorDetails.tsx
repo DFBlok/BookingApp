@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { GraduationCap, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import BookAppointment from "./BookAppointment";
 
 const DoctorDetails = ({ doctor }: any) => {
   const socialMediaLst = [
@@ -47,9 +48,8 @@ const DoctorDetails = ({ doctor }: any) => {
               />
             ))}
           </div>
-          <Button className="mt-3 rounded-full bg-blue-600">
-            Book Appointment
-          </Button>
+
+          <BookAppointment />
         </div>
       </div>
       {/* About Doctor */}
