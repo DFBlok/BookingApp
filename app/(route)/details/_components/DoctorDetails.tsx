@@ -3,6 +3,7 @@ import Image from "next/image";
 import { GraduationCap, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import BookAppointment from "./BookAppointment";
+import { doctors } from "@/data/data";
 
 const DoctorDetails = ({ doctor }: any) => {
   const socialMediaLst = [
@@ -49,7 +50,7 @@ const DoctorDetails = ({ doctor }: any) => {
             ))}
           </div>
 
-          <BookAppointment />
+          <BookAppointment doctor={doctor} />
         </div>
       </div>
       {/* About Doctor */}

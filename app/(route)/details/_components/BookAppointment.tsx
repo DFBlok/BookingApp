@@ -14,8 +14,11 @@ import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { CalendarDays, Clock } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
+import GlobalApi from "@/app/_utils/GlobalApi";
+import { toast } from "sonner";
 
-const BookAppointment = () => {
+const BookAppointment = ({ doctor }: any) => {
   const [date, setDate] = useState(new Date());
   const [timeSlot, setTimeSlot] = useState<{ time: string }[]>([]);
   /*  const [selectedTimeSlot, setSelectedTimeSlot] = useState(); */
@@ -24,6 +27,8 @@ const BookAppointment = () => {
   );
   /* const [note, setNote] = useState(); */
   const [note, setNote] = useState<string>("");
+  //user
+  const { user } = useKindeBrowserClient();
 
   useEffect(() => {
     getTime();
@@ -50,6 +55,26 @@ const BookAppointment = () => {
 
     setTimeSlot(timeList);
   };
+
+  const saveBooking = () => {
+    const data = {
+      data: {
+        UserName: user?.given_name + " " + user?.family_name,
+        Email: user?.email,
+        Time: selectedTimeSlot,
+        Date: date,
+        doctor: doctor.id,
+        Note: note,
+      },
+    };
+    GlobalApi.bookAppointment(data).then((resp: any) => {
+      console.log(resp);
+      if (resp) {
+        toast("Booking Confirmation will send via Email");
+      }
+    });
+  };
+
   const isPastDay = (day: any) => {
     return day < new Date();
   };
@@ -92,6 +117,7 @@ const BookAppointment = () => {
                       {timeSlot?.map((item, index) => (
                         <h2
                           onClick={() => setSelectedTimeSlot(item.time)}
+                          key={index}
                           className={`p-2 border cursor-pointer text-center hover:bg-blue-500 hover:text-white rounded-full ${item.time == selectedTimeSlot && "bg-blue-600 text-white"}`}
                         >
                           {item.time}
@@ -121,6 +147,7 @@ const BookAppointment = () => {
                 <Button
                   type="button"
                   disabled={!(date && selectedTimeSlot)}
+                  onClick={() => saveBooking()}
                   className="bg-blue-600 "
                 >
                   Submit
