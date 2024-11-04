@@ -4,7 +4,7 @@ const { default: axios } = require("axios");
 const API_KEY = process.env.NEXT_PUBLIC_STRAPI_API_KEY;
 
 const axiosClient = axios.create({
-  baseURL: "http://localhost:1337/api",
+  baseURL: "https://doctor-booking-app-backend-fe4w.onrender.com/api",
   headers: {
     " Authorization": `Bearer ${API_KEY}`,
   },
@@ -32,12 +32,16 @@ const getDoctorById = (id: any) =>
 //bookAppointment
 const bookAppointment = (data: any) => axiosClient.post("/appointments", data);
 
+//endpoint to send email
+const sendEmail = (data: any) => axios.post("/api/sendEmail", data);
+
 export default {
   getCategory,
   getDoctorList,
   getDoctorByCategory,
   getDoctorById,
   bookAppointment,
+  sendEmail,
 };
 /* const api = { getCategory };
 export default api; */
